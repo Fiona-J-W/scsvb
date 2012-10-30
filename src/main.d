@@ -48,13 +48,11 @@ int main(string[] args){
 		output = stdout;
 	}
 	int[Date] data;
-	if(!(dateFieldName in csvData.front)){
-		stderr.writefln("ERROR: Invalid input: There is no coloumn named “%s”", dateFieldName);
-		return 2;
-	}
-	if(!(divFieldName in csvData.front)){
-		stderr.writefln("ERROR: Invalid input: There is no coloumn named “%s”", divFieldName);
-		return 3;
+	foreach(name; [dateFieldName, divFieldName]){
+		if(!(name in csvData.front)){
+			stderr.writefln("ERROR: Invalid input: There is no coloumn named “%s”", name);
+			return 2;
+		}
 	}
 	foreach(record; csvData){
 		auto tmp = split(record[dateFieldName], ".");
