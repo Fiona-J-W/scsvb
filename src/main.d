@@ -60,9 +60,8 @@ int main(string[] args){
 			stderr.writefln("Warning: invalid date: “%s”",tmp);
 			continue;
 		}
-		dchar[dchar] dummy;
 		auto tmpDate = Date(2000 + to!int(tmp[2]),to!int(tmp[1]),to!int(tmp[0]));
-		data[tmpDate] += to!int( translate(record[divFieldName],dummy,",") );
+		data[tmpDate] += to!int( removechars(record[divFieldName],","));
 	}
 	int money = startVal;
 	foreach(date; data.keys.sort){
