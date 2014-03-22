@@ -64,7 +64,7 @@ int main(string[] args){
 		data[tmpDate] += to!int( removechars(record[divFieldName],","));
 	}
 	int money = startVal;
-	foreach(date; data.keys.sort){
+	foreach(date; data.keys.sort.reverse){
 		money += data[date];
 		output.writeln(date.toISOExtString(), "  ", to!double(money)/100);
 	}
